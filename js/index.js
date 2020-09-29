@@ -11,17 +11,19 @@
 
     // 按需加载
     function loadOnce($elem, success) {
-        var dataLoad = $elem.data('load');
+        var dataLoad = $elem.data('load'); // 加载路径
 
         if (!dataLoad) return;
 
         if (!$elem.data('loaded')) {
             $elem.data('loaded', true);
-            $.getJSON(dataLoad).done(function (data) {
-                if (typeof success === 'function') success($elem, data);
-            }).fail(function () {
-                $elem.data('loaded', false);
-            });
+            setTimeout(function() {
+                $.getJSON(dataLoad).done(function (data) {
+                    if (typeof success === 'function') success($elem, data);
+                }).fail(function () {
+                    $elem.data('loaded', false);
+                });
+            }, 3000) // 模拟当有延迟时，出现加载图标，3秒后在出现具体商品内容。
         }
     }
 
@@ -78,6 +80,61 @@
             html += '<li class="search-layer-item text-ellipsis">' + data['result'][i][0] + '</li>';
         }
         return html;
+    }
+
+// cart
+    $('.cart').on('dropdown-show', function (e) {
+        loadOnce($(this), buildCartItem);
+    });
+
+    //menu 下拉菜单设置
+    $(".cart").dropdown({
+        css3: true,
+        js: false
+    });
+
+    function buildCartItem($elem, data) {
+        var html = "";
+        if (data.length === 0) {
+            html = '<li class="cart-blank">购物车里还没有商品<br>赶紧去选购吧！<\/li>';
+            $elem.data('loaded', false);
+        } else {
+            html += '<div class="cart-title">最新加入的商品<\/div>';
+            html += '<div class="cart-items">';
+            for (var i = 0; i < data.length; i++) {
+                html += '<li class="cart-item cf">';
+                html += '<img src="' + data[i]['imgUrl'] + '" class="fl" alt="1.png">';
+                html += '<span class="item-name">' + data[i]['name'] + '<a href="#" class="link delete-btn fr">X<\/a><\/span>';
+                html += '<span class="price">¥' + data[i]['price'] + 'x' + data[i]['num'] + '<\/span>';
+                html += '<\/li>';
+            }
+            html += '<\/div>';
+            html += '<div class="cart-bottom">';
+            html += '共 <span class="total-num">0<\/span> 件商品&nbsp;';
+            html += '共计¥ <span class="total-price">0.00<\/span>';
+            html += '<a href="#" class="go-shopping-btn">去购物<\/a>';
+            html += '<\/div>';
+        }
+        $elem.find('.dropdown-layer').html(html);
+        $elem.find('.dropdown-toggle .num').html(totalNum(data));
+        $elem.find('.cart-bottom .total-num').html(totalNum(data));
+        $elem.find('.cart-bottom .total-price').html(totalPrice(data));
+    }
+
+    function totalNum(data) {
+        var total = 0;
+        for (var i = 0; i < data.length; i++) {
+            total += Number(data[i].num);
+        }
+        return total;
+    }
+
+    function totalPrice(data) {
+        var total = 0;
+        for (var i = 0; i < data.length; i++) {
+            total += Number(data[i].price);
+        }
+        return total;
     }
 
 })(jQuery);

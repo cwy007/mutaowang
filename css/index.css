@@ -58,6 +58,168 @@
         margin-left: 145px;
     }
 
-    .header .cart {
+/* .cart 购物车 */
+    .header .cart.dropdown {
         margin-right: 15px;
+        margin-left: 49px;
+        line-height: 42px;
+        color: #fff;
+        font-size: 14px;
+        position: relative;
+    }
+
+    .cart.dropdown .dropdown-toggle {
+        background: #f01414;
+        color: #fff;
+        display: block;
+        width: 158px;
+        height: 40px;
+        border: 1px solid #f01414;
+    }
+
+    .cart.dropdown .cart-logo {
+        position: absolute;
+        top: 13px;
+        left: 13px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: url(../img/cart/icon-cart.png) no-repeat;
+    }
+
+    .cart.dropdown .text {
+        margin: 0 9px 0 41px;
+        width: 32px;
+    }
+
+    .cart.dropdown .num {
+        display: inline-block;
+        padding-left: 6px;
+    }
+
+    .cart.dropdown .arrow {
+        position: absolute;
+        top: 19px;
+        right: 18px;
+        display: inline-block;
+        width: 8px;
+        height: 5px;
+        background: url(../img/cart/cart-arrow-down.png) center center no-repeat;
+    }
+
+    .cart.dropdown .dropdown-layer {
+        /* display: block; */
+        width: 320px;
+        border: 1px solid #cdd0d4;
+        box-shadow: 0 0px 1px 1px rgba(0,0,0,.08);
+        background-color: #fff;
+        z-index: 2;
+        margin-top: -1px;
+    }
+
+    .cart-active.dropdown .dropdown-toggle {
+        background-color: #fff;
+        border: 1px solid #cdd0d4;
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, .08);
+        color: #f01414;
+        z-index: 3;
+    }
+    .cart-active.dropdown .dropdown-toggle .cart-logo {
+        background: url(../img/cart/icon-cart-red.png) no-repeat;
+    }
+    .cart-active.dropdown .dropdown-toggle .arrow {
+        background: url(../img/cart/cart-arrow-active.png) no-repeat;
+    }
+
+    .cart.dropdown .dropdown-layer .cart-blank {
+        height: 79px;
+        padding-left: 55px;
+        color: #98999f;
+        line-height: 20px;
+        font-size: 11px;
+        margin-top: 41px;
+        position: relative;
+        margin-left: 82px;
+    }
+
+    .cart.dropdown .dropdown-layer .cart-blank:before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: url(../img/cart/cart-blank.png) 0px 0px no-repeat;
+    }
+
+    .cart .dropdown-layer {
+        color: #07111b;
+        padding: 0 12px;
+    }
+
+    .cart-active .cart-title {
+        line-height: 54px;
+        font-size: 12px;
+        text-indent: 12px;
+        color: #07111b;
+        border-bottom: 1px solid #d9dde1;
+        margin-right: 20px;
+    }
+
+    .cart-active .cart-bottom {
+        padding-left: 12px;
+        font-size: 12px;
+        color: #07111b;
+        line-height: 68px;
+        position: relative;
+    }
+
+    .cart .cart-items {
+        height: 345px;
+        overflow: scroll;
+    }
+
+    .cart .cart-items .cart-item {
+        font-size: 11px;
+        line-height: 23px;
+        padding: 11px 13px 9px 13px;
+        position: relative;
+        border-bottom: 1px solid #d9dde1;
+        color: #4d555d;
+        margin-right: 20px;
+    }
+
+    .cart .cart-items .cart-item img {
+        cursor: pointer;
+    }
+
+    .cart .cart-items .cart-item .item-name,
+    .cart .cart-items .cart-item .price {
+        display: block;
+        padding-left: 60px;
+    }
+
+    .cart .cart-items .cart-item .price {
+        font-size: 9px;
+        font-weight: bold;
+    }
+
+    .cart .cart-bottom .go-shopping-btn {
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background-color: #f01414;
+        color: #fff;
+        text-align: center;
+        display: block;
+        float: right;
+        position: absolute;
+        top: 16px;
+        right: 20px;
+    }
+
+    .cart .dropdown-loading {
+        margin: 20px auto;
     }
