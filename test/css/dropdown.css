@@ -1,0 +1,31 @@
+/* .dropdown 组件的基础样式；通用的下拉按钮 */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-toggle {
+        position: relative;
+        z-index: 2;
+    }
+
+    .dropdown-arrow {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .dropdown-layer {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .dropdown-left {
+        left: 0;
+        right: auto;
+    }
+
+    .dropdown-right {
+        right: 0;
+        left: auto;
+    }
